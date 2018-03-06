@@ -70,7 +70,7 @@ if(!empty($o_postdata) && is_object($o_postdata) && !empty($o_postdata->name)){
                     if(!empty($tip_insertId)){
                         $query = $db->prepare('UPDATE `user` SET `balance` = `balance` + :tip WHERE `username` = :user AND `network` = :network LIMIT 1');
                         $query->bindValue(':tip', (float) $o_postdata->donate);
-                        $query->bindValue(':user', 'xrptipbot');
+                        $query->bindValue(':user', 'xxrptipbot');
                         $query->bindValue(':network', $o_postdata->type);
                         $query->execute();
 
