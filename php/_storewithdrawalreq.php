@@ -58,7 +58,7 @@ if(!empty($o_postdata) && is_object($o_postdata) && !empty($o_postdata->name)){
                     ');
                     $query->bindValue(':amount', (float) $o_postdata->donate);
                     $query->bindValue(':from_user', $o_postdata->name);
-                    $query->bindValue(':to_user', 'xrptipbot');
+                    $query->bindValue(':to_user', 'csctipbot');
                     $query->bindValue(':sender_balance', - (float) $o_postdata->donate);
                     $query->bindValue(':recipient_balance', + (float) $o_postdata->donate);
                     $query->bindValue(':network', $o_postdata->type);
@@ -70,7 +70,7 @@ if(!empty($o_postdata) && is_object($o_postdata) && !empty($o_postdata->name)){
                     if(!empty($tip_insertId)){
                         $query = $db->prepare('UPDATE `user` SET `balance` = `balance` + :tip WHERE `username` = :user AND `network` = :network LIMIT 1');
                         $query->bindValue(':tip', (float) $o_postdata->donate);
-                        $query->bindValue(':user', 'xxrptipbot');
+                        $query->bindValue(':user', 'csctipbot');
                         $query->bindValue(':network', $o_postdata->type);
                         $query->execute();
 
