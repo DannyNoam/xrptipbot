@@ -8,7 +8,7 @@ $amount = preg_replace("@\.$@", "", preg_replace("@[0]+$@", "", number_format(pr
 print_r($reddit_call('/api/compose', 'POST', [
     'api_type' => 'json',
     'to' => $to,
-    'subject' => 'Deposit of XRP confirmed :)',
-    'text' => "Your deposit of **$amount XRP** just came through :D\n\nGreat! Happy tipping.\n\nMore info: https://www.xrptipbot.com/howto",
+    'subject' => 'Deposit of CSC confirmed :)',
+    'text' => "Your deposit of **$amount CSC** just came through :D\n\nGreat! Happy tipping.\n\nMore info: https://www.casinocointipbot.com/howto",
 ]));
 
