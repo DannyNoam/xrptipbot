@@ -19,7 +19,7 @@ try {
         WHERE
             `processed` < 1 AND
             `message`.`network` = "twitter" AND
-            `message`.`from_user` != "xrptipbot"
+            `message`.`from_user` != "casinocointipbot"
         ORDER BY id ASC LIMIT 10
     ');
 
@@ -41,7 +41,7 @@ try {
                         $msg = '';
                     }else {
                         $_toParse = html_entity_decode(trim(preg_replace("@[t\r\n ]+@", " ", $m['message'])));
-                        preg_match_all("@\+[ <&lgt;\t\r\n]*([0-9,\.]+)[&lgt;> \t\r\n\@\/u]*[\@\/uXRPxrp]*@ms", $_toParse, $match);
+                        preg_match_all("@\+[ <&lgt;\t\r\n]*([0-9,\.]+)[&lgt;> \t\r\n\@\/u]*[\@\/uCSCcsc]*@ms", $_toParse, $match);
 
                         if(!empty($match[1][0])) {
                             $amount = round( (float) str_replace(",", ".", $match[1][0]), 6);
@@ -54,7 +54,7 @@ try {
                                 $msg = '@'.$m['from_user'] . " Sorry, I don't know where the decimal sign and the thousands separators are. Please use only a dot as a decimal sign, and do not use a thousands separator.";
                             }else {
                                 if(empty($m['_from_user_name'])){
-                                    $msg = '@'.$m['from_user'] . " You cannot send tips untill you deposit some ".'$XRP'." at https://www.xrptipbot.com/deposit ...";
+                                    $msg = '@'.$m['from_user'] . " You cannot send tips untill you deposit some ".'$CSC'." at https://www.xrptipbot.com/deposit ...";
                                 }else{
 
                                     if(empty($m['_to_user_name'])){
@@ -65,17 +65,17 @@ try {
                                     }
 
                                     if($m['_from_user_balance'] < $amount){
-                                        $msg = '@'.$m['from_user'].' Awwww... Your Tip Bot balance is too low :( Please deposit some $XRP at https://www.xrptipbot.com/deposit first and tip @'.$m['parent_author'].' again.';
+                                        $msg = '@'.$m['from_user'].' Awwww... Your Tip Bot balance is too low :( Please deposit some $CSC at https://www.casinocointipbot.com/deposit first and tip @'.$m['parent_author'].' again.';
                                     }else{
-                                        if(strtolower($m['parent_author']) == 'xrptipbot'){
-                                            $msg = '@'.$m['from_user'].' Thank you so much! Your donation to me, the one and only $XRP Tip Bot, is very much appreciated!';
+                                        if(strtolower($m['parent_author']) == 'casinnocointipbot'){
+                                            $msg = '@'.$m['from_user'].' Thank you so much! Your donation to me, the one and only $CSC Tip Bot, is very much appreciated!';
                                         }else{
                                             $usdamount = '';
-                                            $bid = (float) @json_decode(@file_get_contents('https://www.bitstamp.net/api/v2/ticker_hour/xrpusd/', false, @stream_context_create(['http'=>['timeout'=>10]])))->bid;
+                                            $bid = (float) @json_decode(@file_get_contents('https://www.bitstamp.net/api/v2/ticker_hour/cscusd/', false, @stream_context_create(['http'=>['timeout'=>10]])))->bid;
                                             if(!empty($bid)){
                                                 $usdamount = ' (' . number_format($bid * $amount, 2, '.', '') . ' USD)';
                                             }
-                                            $msg = '@' . $m['parent_author'] . ' You have received a tip: ' . $amount . ' $XRP' . $usdamount . ' from @' . $m['from_user'] . ' ';
+                                            $msg = '@' . $m['parent_author'] . ' You have received a tip: ' . $amount . ' $CSC' . $usdamount . ' from @' . $m['from_user'] . ' ';
                                             // if(empty($m['_to_user_name'])){
                                                 // $msg .= "\n".'(This is the first tip sent to @' . $m['parent_author'] . ' :D)';
                                             // }
