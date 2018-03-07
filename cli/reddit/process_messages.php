@@ -20,7 +20,7 @@ try {
             `processed` < 1 AND
             `message`.`network` = "reddit" AND
             `message`.`from_user` != "AutoModerator" AND
-            `message`.`from_user` != "xrptipbot"
+            `message`.`from_user` != "casinocointipbot"
         ORDER BY id ASC LIMIT 10
     ');
 
@@ -45,7 +45,7 @@ try {
                         $msg = '';
                     }else {
                         $_toParse = html_entity_decode(trim(preg_replace("@[t\r\n ]+@", " ", $m['message'])));
-                        preg_match_all("@\+[ <&lgt;\t\r\n]*([0-9,\.]+)[&lgt;> \t\r\n\/u]*[\/uXRPxrp]*@ms", $_toParse, $match);
+                        preg_match_all("@\+[ <&lgt;\t\r\n]*([0-9,\.]+)[&lgt;> \t\r\n\/u]*[\/uCSCcsc]*@ms", $_toParse, $match);
 
                         if(!empty($match[1][0])) {
                             $amount = round( (float) str_replace(",", ".", $match[1][0]), 6);
@@ -69,9 +69,9 @@ try {
                                     }
 
                                     if($m['_from_user_balance'] < $amount){
-                                        $msg = 'Awwww... Your Tip Bot balance is too low :( **Please [deposit](https://www.xrptipbot.com/deposit)** some XRP first and tip **'.$m['parent_author'].'** again.';
+                                        $msg = 'Awwww... Your Tip Bot balance is too low :( **Please [deposit](https://www.casinocointipbot.com/deposit)** some XRP first and tip **'.$m['parent_author'].'** again.';
                                     }else{
-                                        if(strtolower($m['parent_author']) == 'xrptipbot'){
+                                        if(strtolower($m['parent_author']) == 'casinocointipbot'){
                                             $msg = 'Thank you so much! Your donation to me, the one and only XRP Tip Bot, is very much appreciated!';
                                         }else{
                                             $usdamount = '';
@@ -79,7 +79,7 @@ try {
                                             if(!empty($bid)){
                                                 $usdamount = ' (' . number_format($bid * $amount, 2, '.', '') . ' USD)';
                                             }
-                                            $msg = 'Awesome ' . $m['from_user'] . ', you have tipped **' . $amount . ' XRP**' . $usdamount . ' to **' . $m['parent_author'] . '**!';
+                                            $msg = 'Awesome ' . $m['from_user'] . ', you have tipped **' . $amount . ' CSC**' . $usdamount . ' to **' . $m['parent_author'] . '**!';
                                             if(empty($m['_to_user_name'])){
                                                 $msg .= "\n".'(This is the *very first* tip sent to /u/' . $m['parent_author'] . ' :D)';
                                             }
@@ -125,17 +125,17 @@ try {
                         }else {
                             // $msg  = "<< PARSE MSG, NO MATCH >>: [" . $m['message'] . "] \n";
                             // $msg .= "\n------------------------------------------\n";
-                            $msg = "Sorry, I couldn't find the amount of XRP to tip... Plase use the format as described in the **[Howto](https://www.xrptipbot.com/howto)**";
+                            $msg = "Sorry, I couldn't find the amount of CSC to tip... Plase use the format as described in the **[Howto](https://www.casinocointipbot.com/howto)**";
                             // $msg = '';
                         }
                     }
                 }
             }else{
-                $msg = "Sorry, I only understand comments (when I am mentioned). For more information check the **[Howto](https://www.xrptipbot.com/howto)** or contact the developer of the XRP Tip Bot, /u/pepperew";
+                $msg = "Sorry, I only understand comments (when I am mentioned). For more information check the **[Howto](https://www.casinocointipbot.com/howto)** or contact the developer of the CSC Tip Bot, /u/pepperew";
             }
 
-            if($m['parent_author'] == 'xrptipbot' && $m['to_user'] == 'xrptipbot'){
-                // Message to the XRP tip bot, process only if valid tip
+            if($m['parent_author'] == 'casinocointipbot' && $m['to_user'] == 'casinocointipbot'){
+                // Message to the CSC tip bot, process only if valid tip
                 if(!$is_valid_tip){
                     $msg = '';
                 }
