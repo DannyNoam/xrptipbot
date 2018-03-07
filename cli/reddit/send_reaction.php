@@ -11,7 +11,7 @@ if(!empty($original_text)){
     $post = $reddit_call('/api/comment', 'POST', [
         'api_type' => 'json',
         'thing_id' => $at_id,
-        'text' => $text."\n\n---\n**XRPTipBot** 🎉 **[HOWTO](https://www.xrptipbot.com/howto)** | [ACCOUNT](https://www.xrptipbot.com/account) | [DEPOSIT](https://www.xrptipbot.com/deposit) | [WITHDRAW](https://www.xrptipbot.com/withdraw) | [STATS](https://www.xrptipbot.com/stats)",
+        'text' => $text."\n\n---\n**casinocointipbot** 🎉 **[HOWTO](https://www.casinocointipbot.com/howto)** | [ACCOUNT](https://www.casinocointipbot.com/account) | [DEPOSIT](https://www.casinocointipbot.com/deposit) | [WITHDRAW](https://www.casinocointipbot.com/withdraw) | [STATS](https://www.casinocointipbot.com/stats)",
     ]);
 }
 
