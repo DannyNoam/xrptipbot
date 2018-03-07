@@ -38,14 +38,14 @@ client.on('message', msg => {
           username = user.username
         }
 
-        if (username.toLowerCase() === 'xrptipbot') {
+        if (username.toLowerCase() === 'csctipbot') {
           if (uid !== fromUid) {
             // Doesn't count if Tipbot is the sender.
             tipbotMentioned = true
           }
         }
 
-        if (uid !== fromUid && username !== 'XRPTipBot') {
+        if (uid !== fromUid && username !== 'CSCTipBot') {
           if (toUid === '') {
             toUid = uid
             toUsername = username
@@ -77,7 +77,7 @@ client.on('message', msg => {
           channel.send('<@' + fromUid + '> ' + text + ' (' + msgContent + ')')
           console.log('3. Confirm to recipient using PB to [' + toUsername + ']')
           if (toUserObject !== null && text.match(/:tada:/)) {
-            toUserObject.send('Big thanks to <@' + fromUid + '>! ' + text + ' - More info on https://www.xrptipbot.com' +
+            toUserObject.send('Big thanks to <@' + fromUid + '>! ' + text + ' - More info on https://www.csctipbot.com' +
                               "\n" +
                               ' -- <@' + fromUid + '> in ' + channel.guild.name + ' (#' + channel.name + ') : ' + msgContent)
           }
