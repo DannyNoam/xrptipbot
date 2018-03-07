@@ -32,9 +32,9 @@ try {
     }
 
     if (empty($ufrom)) {
-        echo "Register your Tip Bot account first, visit https://www.xrptipbot.com/?login=discord and deposit some XRP.";
+        echo "Register your Tip Bot account first, visit https://www.csctipbot.com/?login=discord and deposit some CSC.";
     } elseif( (float) $ufrom['balance'] == 0) {
-        echo "You don't have any XRP in your Tip Bot account, deposit at https://www.xrptipbot.com/deposit";
+        echo "You don't have any CSC in your Tip Bot account, deposit at https://www.csctipbot.com/deposit";
     } else{
         if(empty($uto)){
             // Create TO user
@@ -46,11 +46,11 @@ try {
         }
 
         $usdamount = '';
-        $bid = (float) @json_decode(@file_get_contents('https://www.bitstamp.net/api/v2/ticker_hour/xrpusd/', false, @stream_context_create(['http'=>['timeout'=>4]])))->bid;
+        $bid = (float) @json_decode(@file_get_contents('https://www.nlexch.com:443//api/v2/tickers/cscbtc.json', false, @stream_context_create(['http'=>['timeout'=>4]])))->bid;
         if(!empty($bid)){
             $usdamount = ' (' . number_format($bid * $amount, 2, '.', '') . ' USD)';
         }
-        $msg = 'tipped **' . $amount . ' XRP**'.$usdamount.' to <@' . $to . '> :tada:';
+        $msg = 'tipped **' . $amount . ' CSC**'.$usdamount.' to <@' . $to . '> :tada:';
 
         $query = $db->prepare('INSERT IGNORE INTO `tip`
                                 (`amount`, `from_user`, `to_user`, `sender_balance`, `recipient_balance`, `network`, `context`)
