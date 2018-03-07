@@ -9,13 +9,13 @@ $text = @$argv[2];
 $original_text = $text;
 
 if(!empty($original_text)){
-    $tipboturl = ' www.xrptipbot.com';
-    if (substr_count($text, 'xrptipbot.com') > 0) {
+    $tipboturl = ' www.casinocointipbot.com';
+    if (substr_count($text, 'casinocointipbot.com') > 0) {
         $tipboturl = '';
     }
 
     $postdata = [
-        'status' => $text." 🎉$tipboturl #xrpthestandard",
+        'status' => $text." 🎉$tipboturl #csc",
     ];
     if (!empty($parent_id)) {
         $postdata['attachment_url'] = 'https://twitter.com/' . $at_id;
@@ -26,7 +26,7 @@ if(!empty($original_text)){
 
 $callbackurl = '';
 if(!empty($post->id)){
-    $callbackurl = "https://twitter.com/xrptipbot/status/" . @$post->id;
+    $callbackurl = "https://twitter.com/casinocointipbot/status/" . @$post->id;
     echo "\n\nPosted, $callbackurl" . ' ^ ' . @$post->text . "\n";
 }else{
     if(empty($original_text)){
