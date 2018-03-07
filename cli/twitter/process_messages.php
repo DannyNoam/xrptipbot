@@ -67,7 +67,7 @@ try {
                                     if($m['_from_user_balance'] < $amount){
                                         $msg = '@'.$m['from_user'].' Awwww... Your Tip Bot balance is too low :( Please deposit some $CSC at https://www.casinocointipbot.com/deposit first and tip @'.$m['parent_author'].' again.';
                                     }else{
-                                        if(strtolower($m['parent_author']) == 'casinnocointipbot'){
+                                        if(strtolower($m['parent_author']) == 'casinocointipbot'){
                                             $msg = '@'.$m['from_user'].' Thank you so much! Your donation to me, the one and only $CSC Tip Bot, is very much appreciated!';
                                         }else{
                                             $usdamount = '';
