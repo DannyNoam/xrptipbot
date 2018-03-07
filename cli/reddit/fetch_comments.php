@@ -34,8 +34,8 @@ if(!empty($reddits)){
             // $comment['body'] .= "\n+.1 xrp";
 
             echo "    - [ " . $comment['name'] . " ] " . $comment['author'] . " @ " . $comment['link_title'];
-            if(!preg_match("@u\/xrptipbot@i", $comment['body'])){
-                if((preg_match("@(\+[ ]*[0-9\.,]+[ ]*)XRP@msi", $comment['body'], $m) || preg_match("@TIP[ ]*([0-9\.,]+[ ]*)XRP@msi", $comment['body'], $n)) && preg_match("@^TIP|[ ]+TIP|TIP[ ]+@i", $comment['body'])){
+            if(!preg_match("@u\/casinocointipbot@i", $comment['body'])){
+                if((preg_match("@(\+[ ]*[0-9\.,]+[ ]*)CSC@msi", $comment['body'], $m) || preg_match("@TIP[ ]*([0-9\.,]+[ ]*)CSC@msi", $comment['body'], $n)) && preg_match("@^TIP|[ ]+TIP|TIP[ ]+@i", $comment['body'])){
                     echo "\n";
                     if(!is_array($m) || !isset($m[1])){
                         $m = $n;
@@ -44,7 +44,7 @@ if(!empty($reddits)){
 
                     echo "        >>> " . $comment['body'];
                     $data = $comment;
-                    $data['body'] .= preg_replace("@[ ]+@", " ", "\n".' -- Short syntax tip: '.$m[1].' /u/xrptipbot');
+                    $data['body'] .= preg_replace("@[ ]+@", " ", "\n".' -- Short syntax tip: '.$m[1].' /u/casinocointipbot');
                     print_r($m);
                     // print_r($comment);
 
@@ -60,7 +60,7 @@ if(!empty($reddits)){
                         $query->bindValue(':ext_id',    @$data['name']);
                         $query->bindValue(':type',      $type);
                         $query->bindValue(':from_user', @$data['author']);
-                        $query->bindValue(':to_user',   'xrptipbot');
+                        $query->bindValue(':to_user',   'casinocointipbot');
                         $query->bindValue(':subject',   'subreddit_reaction');
                         $query->bindParam(':message',   $message);
                         $query->bindValue(':parent_id', @$data['parent_id']);
