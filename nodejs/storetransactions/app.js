@@ -1,5 +1,5 @@
-const RippleAPI = require('ripple-lib').RippleAPI
-const api       = new RippleAPI({ server: 'wss://s1.ripple.com' }) // Public rippled server
+const CasinocoinAPI = require('casinocoin-libjs').CasinocoinAPI
+const api       = new CasinocoinAPI({ server: 'wss://ws01.casinocoin.org' }) // Public casinocoind server
 const fetch     = require('node-fetch')
 
 const fs        = require('fs')
@@ -43,7 +43,7 @@ var _storeTransaction = function (tx) {
       ledger: tx.ledger_index,
       from: tx.Account,
       to: tx.Destination,
-      xrp: transferAmount,
+      csc: transferAmount,
       tag: destinationTag,
       type: tx.TransactionType,
       fullTx: JSON.parse(JSON.stringify(tx))
