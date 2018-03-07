@@ -1,5 +1,5 @@
-const RippleAPI = require('ripple-lib').RippleAPI
-const api       = new RippleAPI({ server: 'wss://s1.ripple.com' }) // Public rippled server
+const RippleAPI = require('casinocoin-libjs').CasinocoinAPI
+const api       = new RippleAPI({ server: 'wss://ws01.casinocoin.org' }) // Public rippled server
 const fetch     = require('node-fetch')
 const fs        = require('fs')
 const twilio    = require('twilio')
@@ -29,9 +29,9 @@ var startLedger = 0
   var payFrom = argv[1]
   var payTo = argv[2]
   var payTo_tag = parseInt(argv[3])
-  var xrpAmount = parseFloat(argv[0])
+  var cscAmount = parseFloat(argv[0])
 
-  console.log('< PAY ' + xrpAmount + ' XRP FROM ' + payFrom + ' TO ' + payTo + ':' + payTo_tag)
+  console.log('< PAY ' + xrpAmount + ' CSC FROM ' + payFrom + ' TO ' + payTo + ':' + payTo_tag)
 
   var signed_tx = null
   var tx_at_ledger = 0
@@ -53,7 +53,7 @@ var _processTransaction = function () {
         "Fee" : _fee+"",
         "Destination" : payTo,
         "DestinationTag" : payTo_tag,
-        "Amount" : (xrpAmount*1000*1000).toFixed(0)+"",
+        "Amount" : (cscAmount*1000*1000).toFixed(0)+"",
         "LastLedgerSequence" : closedLedger+ledgerAwait,
         "Sequence" : accInfo.sequence
      }
