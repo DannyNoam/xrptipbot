@@ -31,7 +31,7 @@ var startLedger = 0
   var payTo_tag = parseInt(argv[3])
   var cscAmount = parseFloat(argv[0])
 
-  console.log('< PAY ' + xrpAmount + ' CSC FROM ' + payFrom + ' TO ' + payTo + ':' + payTo_tag)
+  console.log('< PAY ' + cscAmount + ' CSC FROM ' + payFrom + ' TO ' + payTo + ':' + payTo_tag)
 
   var signed_tx = null
   var tx_at_ledger = 0

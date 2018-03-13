@@ -1,4 +1,4 @@
-/.config.js
+/config.json
 /config.php
 /cli/process_withdraw/log_processOne.txt
 /cli/reddit/composer.lock
@@ -20,3 +20,4 @@
 /cli/twitter/log/process_messages.txt
 node_modules/
 cli/discord/app.log
+.idea/
