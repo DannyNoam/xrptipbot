@@ -1,4 +1,6 @@
 -- Create syntax for TABLE 'deposit'
+USE CSC_TIPS_DB;
+
 CREATE TABLE `deposit` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `moment` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

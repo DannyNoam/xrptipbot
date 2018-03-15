@@ -38,14 +38,14 @@ client.on('message', msg => {
           username = user.username
         }
 
-        if (username.toLowerCase() === 'csctipbot') {
+        if (username.toLowerCase() === 'csc-tip-bot') {
           if (uid !== fromUid) {
             // Doesn't count if Tipbot is the sender.
             tipbotMentioned = true
           }
         }
 
-        if (uid !== fromUid && username !== 'CSCTipBot') {
+        if (uid !== fromUid && username !== 'csc-tip-bot') {
           if (toUid === '') {
             toUid = uid
             toUsername = username
@@ -89,7 +89,7 @@ client.on('message', msg => {
 
       if (isNaN(tipAmount) || tipAmount > 5 || tipAmount === 0 || tipAmount < 0) {
         if (tipAmount > 5) {
-          replyToMsg('There\'s a tip maximum of 5 XRP')
+          replyToMsg('There\'s a tip maximum of 5 CSC')
         } else {
           replyToMsg('Invalid tip amount: "' + tip[1] + '"')
         }
@@ -98,10 +98,16 @@ client.on('message', msg => {
       } else if (fromUid === toUid) {
         replyToMsg('You cannot tip yourself')
       } else {
+        console.log("Tipping user...");
         var safeGuild = msg.channel.guild.name.replace(/[^a-zA-Z0-9 _\-\.\(\),]/g, '')
         safeGuild += '#'
         safeGuild += msg.channel.name.replace(/[^a-zA-Z0-9 _\-\.\(\),]/g, '')
 
+        console.log("FROM UID: " + fromUid);
+        console.log("To UID: " + toUid);
+        console.log("Tip Amount: " + tipAmount);
+        console.log("To Username: " + toUsername);
+        console.log("Safe Guild: " + safeGuild);
         let cmd = spawn('/usr/bin/php', [ '/data/cli/discord/process.php', fromUid, toUid, tipAmount, toUsername, safeGuild ]) // , ['-lh', '/tmp']
         cmd.stdout.on('data', function (data) {
           replyToMsg(data.toString().trim())

@@ -5,7 +5,7 @@ RUN cd / && mkdir data
 COPY . /data/
 
 RUN apt-get -y update
-RUN apt-get -y install npm php7.0 curl
+RUN apt-get -y install npm php7.0 curl php-mysql
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash
 
