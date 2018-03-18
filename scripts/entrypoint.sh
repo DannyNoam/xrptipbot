@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chmod +x /etc/php/7.0/cli/php.ini # maybe?
+chmod +x /etc/php/7.0/cli/php.ini
 
 php /data/config.php
 

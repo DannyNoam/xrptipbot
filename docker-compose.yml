@@ -1,0 +1,18 @@
+web:
+  build: ./web
+  ports:
+    - "8080:80"
+  links:
+    - php
+  restart: always
+php:
+  build: ./php7fpm
+csctipbot:
+  build: .
+#  depends_on:
+#    - mariadb
+mariadb:
+  build: ./db
+  ports:
+    - "5000:3306"
+
