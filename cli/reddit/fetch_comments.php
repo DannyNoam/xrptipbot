@@ -1,6 +1,6 @@
 <?php
 
-require_once '_bootstrap.php';
+require_once 'reddit_bootstrap.php';
 require_once '/data/db.php';
 
 echo "\nProcessing REDDIT comments (not mentions)...\n";

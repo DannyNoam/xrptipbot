@@ -1,0 +1,6 @@
+{
+  "require": {
+    "rtheunissen/oauth2-reddit": "2.0.1",
+    "league/oauth2-client": "2.3.0"
+  }
+}

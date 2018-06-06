@@ -1,5 +1,5 @@
 const fs = require('fs')
-let configfile = fs.readFileSync('/data/.config.js');
+let configfile = fs.readFileSync('/scripts/.config.js');
 let config = JSON.parse(configfile)
 
 const Discord = require('discord.js')
@@ -38,14 +38,14 @@ client.on('message', msg => {
           username = user.username
         }
 
-        if (username.toLowerCase() === 'csc-tip-bot') {
+        if (username.toLowerCase() === 'csctipbot') {
           if (uid !== fromUid) {
             // Doesn't count if Tipbot is the sender.
             tipbotMentioned = true
           }
         }
 
-        if (uid !== fromUid && username !== 'csc-tip-bot') {
+        if (uid !== fromUid && username !== 'CSCTipBot') {
           if (toUid === '') {
             toUid = uid
             toUsername = username
@@ -87,16 +87,16 @@ client.on('message', msg => {
         })
       }
 
-      if (isNaN(tipAmount) || tipAmount > 5 || tipAmount === 0 || tipAmount < 0) {
-        if (tipAmount > 5) {
-          replyToMsg('There\'s a tip maximum of 5 CSC')
+      if (isNaN(tipAmount) || tipAmount > 5000 || tipAmount === 0 || tipAmount < 0) {
+        if (tipAmount > 5000) {
+          replyToMsg('You\'re super generous, but there\'s a maximum of 5000 CSC.')
         } else {
           replyToMsg('Invalid tip amount: "' + tip[1] + '"')
         }
       } else if (toUid === '') {
-        replyToMsg('Cannot detect who you wanted to tip, please mention the user to be tipped :innocent:')
+        replyToMsg('Cannot detect who you wanted to tip. Please mention the user to be tipped :innocent:')
       } else if (fromUid === toUid) {
-        replyToMsg('You cannot tip yourself')
+        replyToMsg('You cannot tip yourself. Cheeky.')
       } else {
         console.log("Tipping user...");
         var safeGuild = msg.channel.guild.name.replace(/[^a-zA-Z0-9 _\-\.\(\),]/g, '')
@@ -108,9 +108,11 @@ client.on('message', msg => {
         console.log("Tip Amount: " + tipAmount);
         console.log("To Username: " + toUsername);
         console.log("Safe Guild: " + safeGuild);
-        let cmd = spawn('/usr/bin/php', [ '/data/cli/discord/process.php', fromUid, toUid, tipAmount, toUsername, safeGuild ]) // , ['-lh', '/tmp']
+        let cmd = spawn('/usr/bin/php', [ '/scripts/process.php', fromUid, toUid, tipAmount, toUsername, safeGuild ]) // , ['-lh', '/tmp']
         cmd.stdout.on('data', function (data) {
-          replyToMsg(data.toString().trim())
+          if(data.toString().trim().length !== 0) {
+            replyToMsg(data.toString().trim())
+          }
         });
       }
     }

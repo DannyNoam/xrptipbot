@@ -1,6 +1,6 @@
 <?php
 
-require_once '_bootstrap.php';
+require_once 'reddit_bootstrap.php';
 require_once '/data/db.php';
 
 echo "\nProcessing REDDIT messages...\n";
@@ -58,7 +58,7 @@ try {
                                 $msg = "Sorry, I don't know where the decimal sign and the thousands separators are. Please use only a dot as a decimal sign, and do not use a thousands separator.";
                             }else {
                                 if(empty($m['_from_user_name'])){
-                                    $msg = "You cannot send tips untill you **[deposit some XRP](https://www.xrptipbot.com/deposit)**...";
+                                    $msg = "You cannot send tips until you **[deposit some CSC](https://www.csctipbot.com/deposit)**...";
                                 }else{
 
                                     if(empty($m['_to_user_name'])){

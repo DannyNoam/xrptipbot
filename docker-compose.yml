@@ -1,0 +1,56 @@
+version: '2'
+services:
+  csc-nginx:
+    build: ./nginx
+    ports:
+      - "443:443"
+    links:
+      - php
+    restart: always
+    volumes:
+      - /home/core/www:/usr/share/nginx/html
+  php:
+    build: ./php-fpm
+    volumes:
+      - /home/core/www:/usr/share/nginx/html
+    restart: always
+  csctipbot:
+    build: .
+    depends_on:
+      - mariadb
+    volumes:
+      - /home/core/www:/scripts/
+  mariadb:
+    build: ./db
+    ports:
+      - "5000:3306"
+    restart: always
+  ledger-watcher:
+    build: ./ledger-watcher
+    restart: always
+    volumes:
+      - /home/core/www:/data/
+    depends_on:
+      - mariadb
+  sendwithdrawreq:
+    build: ./sendwithdrawreq
+    restart: always
+    volumes:
+      - /home/core/www:/data/
+    depends_on:
+      - mariadb
+  twitter:
+    build: ./twitter
+    restart: always
+    volumes:
+      - /home/core/www:/data/
+    depends_on:
+      - mariadb
+  reddit:
+    build: ./reddit
+    restart: always
+    volumes:
+      - /home/core/www:/data/
+    depends_on:
+      - mariadb
+
